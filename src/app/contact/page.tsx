@@ -2,20 +2,21 @@ import Link from 'next/link';
 
 export default function Contact() {
   return (
-    <main className="flex flex-col items-center px-4 py-8 space-y-8 bg-black">
+    <main className="flex flex-col items-center justify-center px-2 py-8 space-y-8 bg-black lg:w-full w-[280px]  rounded-lg  overflow-hidden">
+
       {/* Header */}
       <h1 className="text-3xl sm:text-5xl font-bold text-white animate-slideIn hover:text-red-500 hover:scale-125 text-center">
         Contact Me
       </h1>
       
       {/* Description */}
-      <p className="text-base sm:text-lg text-white text-center hover:text-green-500 hover:scale-125 px-4">
+      <p className="text-base sm:text-lg text-white text-center hover:text-green-500 hover:scale-105 px-4">
         Feel free to reach out to experience event planning that you will remember for years to come.
       </p>
 
       {/* General Information */}
       <div className="bg-green-100 shadow-md rounded-lg p-4 sm:p-6 w-full max-w-sm sm:max-w-md glowing-border-2">
-        <h2 className="text-xl sm:text-2xl mb-4 text-gray-700 hover:text-blue-500 hover:scale-110 font-bold">
+        <h2 className="text-lg sm:text-2xl mb-4 text-gray-700 hover:text-blue-500 hover:scale-110 font-bold">
           Contact Information
         </h2>
         <ul className="space-y-2 text-sm sm:text-base text-gray-600 font-sans">

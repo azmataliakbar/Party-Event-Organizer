@@ -226,10 +226,11 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
         </div>
       </div>
 
-      <h6 className="text-[5px] lg:text-base text-left mt-0 text-black font-serif space-y-4 font-bold">
-        <span>1- Signed By Booking Party: ________________________</span> <br />
+      <h6 className="text-[5px] lg:text-base text-left mt-0 text-black font-serif space-y-4 font-bold mb-2">
+        <span>1- Signed By Booking Party: ________________________</span> <br /><br /><br />
         <span>2- Signed By Event Organizer: ______________________</span>
       </h6>
+      <h6 className='text-right text-gray-300 font bold mt-2'>Designed By : Azmat Ali</h6>
     </>
   );
 };
