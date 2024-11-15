@@ -71,36 +71,36 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
   };
 
   const handleDownloadPDF = () => {
-    const element = document.getElementById('event-details');
-    if (element) {
-      // Temporarily make the event-details div visible
-      element.classList.remove('hidden');
-      
-      html2pdf()
-        .from(element)
-        .set({
-          margin: [20, 20, 20, 20], // top, right, bottom, left margin
-          filename: `Event_Details_${formData.eventId}.pdf`,
-          html2canvas: { 
-            scale: 4, // Increase scale for better image quality
-            logging: true, 
-          },
-          jsPDF: {
-            orientation: 'landscape',
-            unit: 'mm',
-            format: 'a4',
-            compress: true, // compress to reduce file size
-          },
-        })
-        .save()
-        .then(() => {
-          // Hide the div again after the PDF is generated
-          element.classList.add('hidden');
-        });
+    if (typeof window !== "undefined") {
+      const element = document.getElementById('event-details');
+      if (element) {
+        // Temporarily make the event-details div visible
+        element.classList.remove('hidden');
+        
+        html2pdf()
+          .from(element)
+          .set({
+            margin: [20, 20, 20, 20], // top, right, bottom, left margin
+            filename: `Event_Details_${formData.eventId}.pdf`,
+            html2canvas: { 
+              scale: 4, // Increase scale for better image quality
+              logging: true, 
+            },
+            jsPDF: {
+              orientation: 'landscape',
+              unit: 'mm',
+              format: 'a4',
+              compress: true, // compress to reduce file size
+            },
+          })
+          .save()
+          .then(() => {
+            // Hide the div again after the PDF is generated
+            element.classList.add('hidden');
+          });
+      }
     }
   };
-  
-  
 
   return (
     <>
@@ -217,22 +217,20 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
         <p><strong>Number of Guests:</strong> {formData.numGuests}</p>
         <p><strong>Special Requirements:</strong> {formData.specialRequirements}</p>
         <div>
-  <p className="text-left mt-10 text-black font-serif">
-    1- Signed By Booking Party : ________________________ <br /><br />
-    2- Signed By Event Organizer : _______________________
-  </p>
-</div>
-
-
+          <p className="text-left mt-10 text-black font-serif">
+            1- Signed By Booking Party : ________________________ <br /><br />
+            2- Signed By Event Organizer : _______________________
+          </p>
+        </div>
         <div className="footer">
-        <span>Designed</span> <span>By: </span> Azmat  <span> Ali</span>
+          <span>Designed By: </span> Azmat Ali
         </div>
       </div>
+
       <h6 className="text-[5px] lg:text-base text-left mt-0 text-black font-serif space-y-4 font-bold">
-      <span>1- Signed By Booking Party : ________________________________</span><br /><br />
-      <span>2- Signed By Event Organizer : ________________________________</span>
-</h6>
-      <h6 className="text-[15px] text-right mt-[5px] text-gray-200">Designed By: Azmat Ali</h6>
+        <span>1- Signed By Booking Party: ________________________</span> <br />
+        <span>2- Signed By Event Organizer: ______________________</span>
+      </h6>
     </>
   );
 };
