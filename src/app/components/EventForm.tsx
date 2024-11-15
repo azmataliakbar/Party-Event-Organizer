@@ -101,97 +101,104 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
   return (
     <>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Event ID Number:
-          <input
-            type="number"
-            name="eventId"
-            value={formData.eventId}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-semibold rounded-lg"
-            placeholder="Type Event ID Number"
-          />
-        </label>
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Event Purpose:
-          <input
-            type="text"
-            name="eventName"
-            value={formData.eventName}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Event Purpose"
-          />
-        </label>
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Event Date:
-          <input
-            type="date"
-            name="eventDate"
-            value={formData.eventDate}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-semibold rounded-lg"
-            placeholder="Event Date"
-          />
-        </label>
-        <br />
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Venue:
-          <input
-            type="text"
-            name="venue"
-            value={formData.venue}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Venue"
-          />
-        </label>
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Number of Guests:
-          <input
-            type="number"
-            name="numGuests"
-            value={formData.numGuests}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-semibold rounded-lg"
-            placeholder="Type Number of Guests"
-          />
-        </label>
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Host of Name:
-          <input
-            type="text"
-            name="hostName"
-            value={formData.hostName}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Name of Host"
-          />
-        </label>
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Name of Chief Guest:
-          <input
-            type="text"
-            name="chiefGuest"
-            value={formData.chiefGuest}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Name of Chief Guest"
-          />
-        </label>
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Activity Instructions:
-          <input
-            type="text"
-            name="activity"
-            value={formData.activity}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Activity Instructions"
-          />
-        </label>
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Special Requirements:
-          <input
-            type="text"
-            name="specialRequirements"
-            value={formData.specialRequirements}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Special Requirements"
-          />
-        </label>
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Event ID Number:
+    <input
+      type="number"
+      name="eventId"
+      value={formData.eventId}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-semibold rounded-lg"
+      placeholder="Type Event ID Number"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Event Purpose:
+    <input
+      type="text"
+      name="eventName"
+      value={formData.eventName}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-mono rounded-lg"
+      placeholder="Type Event Purpose"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Event Date:
+    <input
+      type="date"
+      name="eventDate"
+      value={formData.eventDate}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-semibold rounded-lg"
+      placeholder="Event Date"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Venue:
+    <input
+      type="text"
+      name="venue"
+      value={formData.venue}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-mono rounded-lg"
+      placeholder="Type Venue"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Number of Guests:
+    <input
+      type="number"
+      name="numGuests"
+      value={formData.numGuests}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-semibold rounded-lg"
+      placeholder="Type Number of Guests"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Host of Name:
+    <input
+      type="text"
+      name="hostName"
+      value={formData.hostName}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-mono rounded-lg"
+      placeholder="Type Name of Host"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Name of Chief Guest:
+    <input
+      type="text"
+      name="chiefGuest"
+      value={formData.chiefGuest}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-mono rounded-lg"
+      placeholder="Type Name of Guest"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Activity Instructions:
+    <input
+      type="text"
+      name="activity"
+      value={formData.activity}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-mono rounded-lg"
+      placeholder="Type Instructions"
+    />
+  </label>
+
+  <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Special Requirements:
+    <input
+      type="text"
+      name="specialRequirements"
+      value={formData.specialRequirements}
+      onChange={handleChange}
+      className="border p-2 w-full text-black font-mono rounded-lg"
+      placeholder="Type Requirements"
+    />
+  </label>
         <div className="flex mt-2">
           <button type="button" onClick={handleDownloadPDF} className="bg-blue-500 text-white px-2 py-1 lg:px-4 lg:py-2 mr-2 no-print rounded-lg font-bold hover:bg-blue-300 hover:text-black mb-4">
             Download PDF
