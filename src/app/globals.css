@@ -26,6 +26,7 @@ body {
   visibility: hidden;
   }
 
+
   @page {
     margin: 0;
   }
@@ -74,4 +75,9 @@ body {
   background-position: center;
   height: 100vh; /* Full viewport height */
   
+}
+@media (max-width: 768px) {
+  .bg-wallpaper {
+    height: 335vh; /* Height for mobile screens */
+  }
 }
