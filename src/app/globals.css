@@ -23,6 +23,7 @@ body {
 @media print {
   .no-print {
     display: none;
+  visibility: hidden;
   }
 
   @page {

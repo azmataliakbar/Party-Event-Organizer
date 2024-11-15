@@ -4,3 +4,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+  [context.production.environment]
+  NODE_VERSION = "16"

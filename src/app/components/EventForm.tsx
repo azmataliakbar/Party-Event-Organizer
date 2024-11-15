@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import html2pdf from 'html2pdf.js';
 
 type EventDetails = {
   eventId: number;
@@ -66,40 +65,40 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
     });
   };
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   const handleDownloadPDF = () => {
-    if (typeof window !== "undefined") {
-      const element = document.getElementById('event-details');
-      if (element) {
-        // Temporarily make the event-details div visible
-        element.classList.remove('hidden');
-        
-        html2pdf()
+    if (typeof window === "undefined") return;
+
+    const element = document.getElementById('event-details');
+    if (element) {
+      element.classList.remove('hidden');
+
+      import('html2pdf.js').then(html2pdf => {
+        html2pdf.default()
           .from(element)
           .set({
-            margin: [20, 20, 20, 20], // top, right, bottom, left margin
+            margin: [20, 20, 20, 20],
             filename: `Event_Details_${formData.eventId}.pdf`,
-            html2canvas: { 
-              scale: 4, // Increase scale for better image quality
-              logging: true, 
+            html2canvas: {
+              scale: 4,
+              logging: true,
             },
             jsPDF: {
               orientation: 'landscape',
               unit: 'mm',
               format: 'a4',
-              compress: true, // compress to reduce file size
+              compress: true,
             },
           })
           .save()
           .then(() => {
-            // Hide the div again after the PDF is generated
             element.classList.add('hidden');
           });
-      }
+      });
     }
+  };
+
+  const handlePrint = () => {
+    window.print();
   };
 
   return (
