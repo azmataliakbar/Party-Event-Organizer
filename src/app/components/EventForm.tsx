@@ -6,7 +6,6 @@ type EventDetails = {
   eventId: number;
   eventName: string;
   eventDate: string;
-  bookingDate: string;
   venue: string;
   hostName: string;
   chiefGuest: string;
@@ -24,7 +23,6 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
     eventId: 0,
     eventName: '',
     eventDate: '',
-    bookingDate: '',
     venue: '',
     hostName: '',
     chiefGuest: '',
@@ -55,7 +53,6 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
       eventId: 0,
       eventName: '',
       eventDate: '',
-      bookingDate: '',
       venue: '',
       hostName: '',
       chiefGuest: '',
@@ -134,6 +131,7 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
             placeholder="Event Date"
           />
         </label>
+        <br />
         <label className="text-blue-500 font-sans font-semibold hover:text-red-500">Venue:
           <input
             type="text"
