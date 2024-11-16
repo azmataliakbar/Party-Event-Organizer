@@ -42,13 +42,15 @@ body {
 }
 
 #event-details {
-  padding: 20px;
+  padding: 15px;
   font-family: Arial, sans-serif;
 }
 
 #event-details h2 {
-  text-align: center;
+  text-align: left;
   font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -78,6 +80,6 @@ body {
 }
 @media (max-width: 768px) {
   .bg-wallpaper {
-    height: 335vh; /* Height for mobile screens */
+    height: 315vh; /* Height for mobile screens */
   }
 }

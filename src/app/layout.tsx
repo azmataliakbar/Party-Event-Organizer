@@ -42,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </nav>
         )}
 
-        <main className="p-6">
+        <main className="p-[5px] ">
           {children}
         </main>
       </body>

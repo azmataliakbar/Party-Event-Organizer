@@ -1,67 +1,39 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-type EventDetails = {
-  eventId: number;
-  eventName: string;
-  eventDate: string;
-  venue: string;
-  hostName: string;
-  chiefGuest: string;
-  activity: string;
-  numGuests: number;
-  specialRequirements: string;
-};
 
-interface EventFormProps {
-  onSave: (eventDetails: EventDetails) => void; // Accept the full EventDetails, including eventId
-}
-
-const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
-  const [formData, setFormData] = useState<EventDetails>({
-    eventId: 0, // Initially set eventId to 0
-    eventName: '',
-    eventDate: '',
-    venue: '',
-    hostName: '',
-    chiefGuest: '',
-    activity: '',
+const EventForm = () => {
+  const [formData, setFormData] = useState({
+    eventId: 0,
+    eventName: "",
+    eventDate: "",
+    venue: "",
+    hostName: "",
+    chiefGuest: "",
+    activity: "",
     numGuests: 0,
-    specialRequirements: '',
+    specialRequirements: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: name === 'numGuests' ? parseInt(value, 10) : value,
-    }));
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.eventName || !formData.eventDate || !formData.venue || !formData.hostName) {
-      alert('Please fill in all required fields.');
-      return;
+  /* const handleDownloadPDF = () => {
+    const element = document.getElementById("event-details");
+    if (element) {
+      import("html2pdf.js").then((html2pdf) => {
+        html2pdf.default().from(element).set({
+          margin: 10,
+          filename: `Event_${formData.eventId}.pdf`,
+          html2canvas: { scale: 2 },
+          jsPDF: { orientation: "portrait" },
+        }).save();
+      });
     }
-
-    // Add the eventId manually and pass the complete formData object to onSave
-    onSave({ ...formData, eventId: Date.now() });
-
-    setFormData({
-      eventId: 0, // Reset eventId after submission
-      eventName: '',
-      eventDate: '',
-      venue: '',
-      hostName: '',
-      chiefGuest: '',
-      activity: '',
-      numGuests: 0,
-      specialRequirements: '',
-    });
-  };
+  }; */
 
   const handleDownloadPDF = () => {
     if (typeof window === "undefined") return;
@@ -100,136 +72,167 @@ const EventForm: React.FC<EventFormProps> = ({ onSave }) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Event ID Number:
-          <input
-            type="number"
-            name="eventId"
-            value={formData.eventId}
-            onChange={handleChange}
-            className="border p-2 w-full text-black font-semibold rounded-lg"
-            placeholder="Type Event ID Number"
-          />
-        </label>
+    <div className="px-4 sm:px-6">
+      <form className="space-y-4">
+      <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+      Event ID:
+      <input
+      type="number"
+      name="eventId"
+      value={formData.eventId}
+      onChange={handleChange}
+      className="border p-2 w-full rounded text-black placeholder:text-base sm:placeholder:text-lg md:placeholder:text-xl"
+      placeholder="Enter Event ID"
+      />
+      </label>
 
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Event Purpose:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Event Name:
           <input
             type="text"
             name="eventName"
             value={formData.eventName}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Event Purpose"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Event Date:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Event Date:
           <input
             type="date"
             name="eventDate"
             value={formData.eventDate}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-semibold rounded-lg"
-            placeholder="Event Date"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Venue:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Venue:
           <input
             type="text"
             name="venue"
             value={formData.venue}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Venue"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Number of Guests:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Number of Guests:
           <input
             type="number"
             name="numGuests"
             value={formData.numGuests}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-semibold rounded-lg"
-            placeholder="Type Number of Guests"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Host of Name:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Host Name:
           <input
             type="text"
             name="hostName"
             value={formData.hostName}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Name of Host"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Name of Chief Guest:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Chief Guest:
           <input
             type="text"
             name="chiefGuest"
             value={formData.chiefGuest}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Name of Guest"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Activity Instructions:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Activity:
           <input
             type="text"
             name="activity"
             value={formData.activity}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Instructions"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <label className="text-blue-500 font-sans font-semibold hover:text-red-500 block mb-4">Special Requirements:
+  
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
+          Special Requirements:
           <input
             type="text"
             name="specialRequirements"
             value={formData.specialRequirements}
             onChange={handleChange}
-            className="border p-2 w-full text-black font-mono rounded-lg"
-            placeholder="Type Requirements"
+            className="border p-2 w-full rounded text-black"
           />
         </label>
-
-        <div className="flex mt-2">
-          <button type="button" onClick={handleDownloadPDF} className="bg-blue-500 text-white px-2 py-1 lg:px-4 lg:py-2 mr-2 no-print rounded-lg font-bold hover:bg-blue-300 hover:text-black mb-4">
+  
+        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <button
+            type="button"
+            onClick={handleDownloadPDF}
+            className="bg-blue-500 text-white px-4 py-2 rounded no-print w-full sm:w-auto"
+          >
             Download PDF
           </button>
-          <button type="button" onClick={handlePrint} className="bg-green-500 text-white  px-3 py-1 lg:px-4 lg:py-2 ml-2 no-print rounded-lg font-bold hover:bg-green-300 hover:text-black mb-4">
+          <button
+            type="button"
+            onClick={handlePrint}
+            className="bg-green-500 text-white px-4 py-2 rounded no-print w-full sm:w-auto"
+          >
             Print
           </button>
         </div>
       </form>
-
-      <div id="event-details" className="hidden">
-        <h2>Event Details</h2>
+  
+      <div className="mt-4">
+        <p className="text-left text-black font-sans font-bold hover:text-blue-500">
+          1- Signed By Booking Party: __________________________
+        </p>
+        <p className="text-left mt-4 text-black font-sans font-bold hover:text-blue-500">
+          2- Signed By Event Organizer: ________________________
+        </p>
+        <p className="mt-8 text-gray-300 text-right font-sans font-bold hover:text-blue-500">
+          Designed By: Azmat Ali
+        </p>
+      </div>
+  
+      <div id="event-details" className="no-print mt-8">
+        <h6>Booking Date: ___ / ___ / ________</h6>
+        <h2><u>Event Details</u></h2>
         <p><strong>Event ID:</strong> {formData.eventId}</p>
-        <p><strong>Event Purpose:</strong> {formData.eventName}</p>
+        <p><strong>Event Name:</strong> {formData.eventName}</p>
         <p><strong>Event Date:</strong> {formData.eventDate}</p>
         <p><strong>Venue:</strong> {formData.venue}</p>
+        <p><strong>Number of Guests:</strong> {formData.numGuests}</p>
         <p><strong>Host Name:</strong> {formData.hostName}</p>
         <p><strong>Chief Guest:</strong> {formData.chiefGuest}</p>
-        <p><strong>Activity Instructions:</strong> {formData.activity}</p>
-        <p><strong>Number of Guests:</strong> {formData.numGuests}</p>
+        <p><strong>Activity:</strong> {formData.activity}</p>
         <p><strong>Special Requirements:</strong> {formData.specialRequirements}</p>
+  
         <div>
-          <p className="text-left mt-10 text-black font-serif">
-            1- Signed By Booking Party : ________________________  Date________
+          <p className="text-left text-black font-serif">
+            1- Signed By Booking Party: ______________________
+          </p>
+          <p className="text-left mt-4 text-black font-serif">
+            2- Signed By Event Organizer: ______________________
+          </p>
+          <p className="mt-8 text-gray-300 font-semibold text-right">
+            Designed By: Azmat Ali
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
+  
 };
 
 export default EventForm;
