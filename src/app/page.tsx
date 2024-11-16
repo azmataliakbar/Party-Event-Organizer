@@ -15,7 +15,7 @@ export default function HomePage() {
       alt="Event Form"
       width={250}
       height={200}
-      className='rounded-lg  lg:h-72 lg:w-72 object-cover ml-5 lg:ml-0'
+      className='rounded-lg  lg:h-72 lg:w-72 object-cover ml-5 sm:ml-7 lg:ml-0'
       />
       <Image
       src="/ev2.png"
