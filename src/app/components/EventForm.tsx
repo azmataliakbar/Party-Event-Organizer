@@ -98,16 +98,17 @@ const EventForm = () => {
           />
         </label>
   
-        <label className="text-blue-500 font-sans font-bold hover:text-red-500">
-          Event Date:
-          <input
-            type="date"
-            name="eventDate"
-            value={formData.eventDate}
-            onChange={handleChange}
-            className="border p-2 w-full rounded text-black"
-          />
+        <label className="text-blue-500 font-sans font-bold hover:text-red-500 block">
+        Event Date:
+        <input
+        type="date"
+        name="eventDate"
+        value={formData.eventDate}
+        onChange={handleChange}
+        className="border p-2 w-full rounded text-black"
+        />
         </label>
+
   
         <label className="text-blue-500 font-sans font-bold hover:text-red-500">
           Venue:
