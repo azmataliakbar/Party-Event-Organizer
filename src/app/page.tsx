@@ -15,28 +15,28 @@ export default function HomePage() {
       alt="Event Form"
       width={250}
       height={200}
-      className='rounded-lg  lg:h-72 lg:w-72 object-cover ml-6 sm:ml-7 lg:ml-0'
+      className='rounded-lg  lg:h-72 lg:w-72 object-cover ml-8 sm:ml-8 lg:ml-0'
       />
       <Image
       src="/ev2.png"
       alt="Event Form"
       width={250}
       height={200}
-      className='rounded-lg lg:h-72 lg:w-72 object-cover ml-5 lg:ml-0'
+      className='rounded-lg lg:h-72 lg:w-72 object-cover ml-7 sm:ml-8 lg:ml-0'
       />
       <Image
       src="/ev3.png"
       alt="Event Form"
       width={250}
       height={200}
-      className='rounded-lg lg:h-72 lg:w-72 object-cover ml-5 lg:ml-0'
+      className='rounded-lg lg:h-72 lg:w-72 object-cover ml-7 sm:ml-8 lg:ml-0'
       />
       <Image
       src="/ev4.png"
       alt="Event Form"
       width={250}
       height={200}
-      className='rounded-lg mb-4 lg:h-72 lg:w-72 object-cover ml-5 lg:ml-0'
+      className='rounded-lg mb-4 lg:h-72 lg:w-72 object-cover ml-7 sm:ml-8 lg:ml-0'
       />
 
       </div>
